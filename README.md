@@ -1,5 +1,6 @@
 # 🧾 AI 会计助手框架
 
+> 版本：**v0.1.0-alpha**（测试版 · 未定稿 · 仅供试跑）
 > 一套面向学会计、自己接单的从业者的 **AI 会计助手框架**。
 > 能答疑会计知识、帮流水归类记账、解读账目报表——**AI 干活，用户真人确认**，可靠又顺手。
 
@@ -28,9 +29,24 @@ accounting-agent/
    └─ recipes/report.yaml          报表月结解读食谱
 ```
 
+## 📥 依赖下载清单（点一下就下）
+
+**不懂命令行也没关系**，下面每个都点一下链接下载安装包，**双击 → 一路下一步**就能装好：
+
+| 依赖 | 干啥用 | 点这里下载 |
+|------|--------|-----------|
+| **Goose**（AI 本体） | 类似 Claude Code 的桌面助手 | [goose-docs.ai/desktop](https://goose-docs.ai/desktop) |
+| **Node.js 18+** | 让记账桥能运行 | [nodejs.org/en/download](https://nodejs.org/en/download) |
+| **hledger**（记账引擎） | 记科目、算账 | [hledger.org](https://hledger.org/) |
+| **hledger-mcp** | 让 AI 读/写账本 | 打开命令行粘这行：`npm i -g @iiatlas/hledger-mcp` |
+
+> ⚠️ **Goose 别用 winget 装**（会装成同名数据库工具）——直接用上面链接下桌面版。
+
+这三样装好后，第 4 步 `bash setup.sh` 会自动帮你查缺、装 hledger-mcp、生成账本。
+
 ## 🚀 快速部署（零基础）
 
-1. 装 **Goose**（桌面版）：官网下载安装，见下方链接
+1. 到上面「依赖下载清单」下载并装好 **Goose**（双击 → 一路下一步）
 2. 装 **Node.js 18+**，再用 `winget install --id simonmichael.hledger` 装 **hledger**（记账引擎）
 3. ⚠️ **【必做】改系统区域为 UTF-8**：控制面板 → 区域 → 管理 → 更改系统区域设置
    → 勾选「Beta: 使用 Unicode UTF-8 提供全球语言支持」→ 重启
