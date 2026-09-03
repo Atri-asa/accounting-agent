@@ -20,6 +20,8 @@ providers:
     display_name: DeepSeek
     base_url: https://api.deepseek.com/v1
     api_key_env: DEEPSEEK_API_KEY   # 从环境变量读 key，绝不写进文件
+    #   注意：key 必须用 `setx DEEPSEEK_API_KEY "sk-xxx"` 写进【系统】环境变量；
+    #   Goose 桌面版不读项目里的 .env，只从系统环境变量读。
     supports_streaming: true
     models:
       deepseek-chat:
@@ -55,12 +57,14 @@ extensions:
     #   下面两行路径替换成你本机真实值（npm prefix -g 可查到，或直接看 setup.sh 生成的 config.local.yaml）
     cmd: node
     args:
-      - "E:/npm-global/node_modules/@iiatlas/hledger-mcp/build/index.js"
-      - "D:/accounting-agent/ledger/master.journal"
+      # ↓↓ 这两条是占位符，必须换成你本机真实路径，否则照抄必错！
+      #    推荐直接跑 `bash setup.sh`，它会自动探测并生成 config.local.yaml（真实路径，免手改）
+      - "<npm全局目录>/node_modules/@iiatlas/hledger-mcp/build/index.js"
+      - "<项目目录>/ledger/master.journal"
       # 学习期建议先只读，稳定后删掉这行即可解锁「写账」
       - "--read-only"
     timeout: 300
 
     # 方式二（若不想找入口 JS，用 npx 联网拉，慢一点但省心）：
     # cmd: npx
-    # args: ["-y", "@iiatlas/hledger-mcp", "D:/accounting-agent/ledger/master.journal", "--read-only"]
+    # args: ["-y", "@iiatlas/hledger-mcp", "<项目目录>/ledger/master.journal", "--read-only"]

@@ -42,7 +42,7 @@ accounting-agent/
 
 > ⚠️ **Goose 别用 winget 装**（会装成同名数据库工具）——直接用上面链接下桌面版。
 
-这三样装好后，第 4 步 `bash setup.sh` 会自动帮你查缺、装 hledger-mcp、生成账本。
+这三样装好后，在 **Windows 的 Git Bash** 里跑第 4 步 `bash setup.sh`，它会自动帮你查缺、装 hledger-mcp、生成账本。
 
 ## 🚀 快速部署（零基础）
 
@@ -51,12 +51,14 @@ accounting-agent/
 3. ⚠️ **【必做】改系统区域为 UTF-8**：控制面板 → 区域 → 管理 → 更改系统区域设置
    → 勾选「Beta: 使用 Unicode UTF-8 提供全球语言支持」→ 重启
    （不改的话，hledger 读不了中文账本——中文 Windows 默认用 GBK 读文件，会报编码错误）
-4. 克隆/解压本仓库，运行 `bash setup.sh`（自动检查依赖、装 hledger-mcp、生成账本）
-5. 在 `.env` 里填自己的 **DeepSeek API key**
+4. 克隆/解压本仓库，在 **Windows 的 Git Bash** 里运行 `bash setup.sh`
+   （自动检查依赖、装 hledger-mcp、生成账本；⚠️ 需 Windows 下 Git Bash，Linux/mac 会失败）
+5. 把 **DeepSeek key** 写进系统环境变量（Goose 桌面版不读项目 `.env`）：
+   在终端执行 `setx DEEPSEEK_API_KEY "sk-你的key"`，然后【重开终端 / 重启 Goose】才生效
 6. 打开 Goose，选上 DeepSeek 模型，就能问会计问题、记接单账
 
 > **第 3 步必须做**，否则 hledger 读中文账本会报 `cannot decode ... CP936` 错误。
-> `bash setup.sh` 会自动检查/安装依赖并生成账本；不熟的找会的人带一遍即可。
+> `bash setup.sh`（需 Windows 下 Git Bash）会自动检查/安装依赖并生成账本；不熟的找会的人带一遍即可。
 
 ## ⚖️ 许可证合规（放心用）
 

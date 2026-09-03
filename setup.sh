@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # ============================================================
-# AI 会计助手 —— 一键配置向导 (Git Bash / Linux)
+# AI 会计助手 —— 一键配置向导（仅限 Windows 下 Git Bash 使用）
+# 说明：脚本用到 cygpath / reg / winget，Linux 或 macOS 会失败，请只在 Windows 的 Git Bash 里跑。
 # 自动检查/装依赖、生成配置 + 账本、提醒改系统区域
 # 用法：bash setup.sh
 # ============================================================
@@ -36,7 +37,7 @@ fi
 say "── 2) 探测工具路径（供配置用）──"
 NP="$(npm prefix -g 2>/dev/null)"
 HLEDGER_ENTRY="$(cygpath -m "$NP"/node_modules/@iiatlas/hledger-mcp/build/index.js 2>/dev/null)"
-LEDGER_WIN="$(cygpath -m "$(pwd)/ledger/master.journal" 2>/dev/null || echo "$$(pwd)/ledger/master.journal")"
+LEDGER_WIN="$(cygpath -m "$(pwd)/ledger/master.journal" 2>/dev/null || echo "$(pwd)/ledger/master.journal")"
 [ -f "$HLEDGER_ENTRY" ] && ok "记账入口已找到" || warn "hledger-mcp 入口未找到（可能未装成功）"
 info "将写入 config 的入口: $HLEDGER_ENTRY"
 
@@ -92,6 +93,8 @@ fi
 
 say "✅ 配置完成！接下来："
 echo "  1. 把 config.local.yaml 内容复制/合并到  %APPDATA%\\Block\\goose\\config\\config.yaml"
-echo "  2. .env 里填 DEEPSEEK_API_KEY"
+echo "  2. 【重要】把 DeepSeek key 写进系统环境变量（Goose 桌面版不读项目 .env）："
+echo "         在 Git Bash 执行：      setx DEEPSEEK_API_KEY \"sk-你的key\""
+echo "         执行后【重开终端 / 重启 Goose】才生效"
 echo "  3. 若提示改系统区域，改完后重启电脑"
 echo "  4. 装 Goose 桌面版，打开后问一个会计问题试试"

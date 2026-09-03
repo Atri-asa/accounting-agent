@@ -2,17 +2,10 @@ version: "1.0.0"
 title: 报表月结解读
 description: 基于账本数据生成一段给人看的月结小结：盈亏、主开支、哪些客户贡献大，并给建议
 instructions: |
-  读取账本数据，帮用户生成一份「月结小结」。必须用大白话，结构如下：
+  调用「hledger-mcp」工具读取本地账本数据（该工具已由主配置挂载，直接调用即可），
+  帮用户生成一份「月结小结」。必须用大白话，结构如下：
   - 本月收入 / 支出 / 结余（数字一律取自账本，勿自算）
   - 主开支在哪里（排序说明）
   - 哪个客户 / 类别贡献最大
   - 一两条可执行的下一步建议
   注意：金额以账本工具计算结果为准，你只负责解读叙述，不要自己演算。
-extensions:
-  - type: stdio
-    name: hledger-mcp
-    cmd: npx
-    args: ["-y", "@iiatlas/hledger-mcp", "{{ ledger }}"]
-    env_keys:
-      - HLEDGER_READ_ONLY
-    description: 只读读取本地账本数据
