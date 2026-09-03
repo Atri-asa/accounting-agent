@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================
-# 弟弟的会计 Agent —— 一键配置向导 (Git Bash / Linux)
+# AI 会计助手 —— 一键配置向导 (Git Bash / Linux)
 # 自动检查/装依赖、生成配置 + 账本、提醒改系统区域
 # 用法：bash setup.sh
 # ============================================================
@@ -44,7 +44,7 @@ say "── 3) 生成 .env / 账本 ──"
 [ -f .env ] || { cp .env.example .env; info "已生成 .env，填入 DeepSeek key"; }
 mkdir -p ledger
 [ -f ledger/master.journal ] || cat > ledger/master.journal <<'EOF'
-; 弟弟的会计账本 master.journal（示例，需系统区域 UTF-8 才能读中文）
+; 用户会计账本 master.journal（示例，需系统区域 UTF-8 才能读中文）
 2026/01/01 初始化
     assets:cash                    10000
         equity:opening

@@ -1,7 +1,7 @@
-# 🧾 弟弟的会计 Agent
+# 🧾 AI 会计助手框架
 
-> 给大学学会计、自己接单的弟弟做的一套 **AI 会计助手框架**。
-> 能答疑会计知识、帮流水归类记账、解读账目报表——**AI 干活，弟弟真人确认**，可靠又顺手。
+> 一套面向学会计、自己接单的从业者的 **AI 会计助手框架**。
+> 能答疑会计知识、帮流水归类记账、解读账目报表——**AI 干活，用户真人确认**，可靠又顺手。
 
 ## 🧩 这套框架由三块组成
 
@@ -21,14 +21,14 @@ accounting-agent/
 ├─ .env.example            环境变量示例（注意：别填真 key 进仓库）
 ├─ .gitignore              保护 key 和账本
 ├─ setup.sh                一键配置脚本
-├─ ledger/                 账本存放目录（弟弟个人数据，被 gitignore）
+├─ ledger/                 账本存放目录（用户个人数据，被 gitignore）
 └─ .goose/
    ├─ skills/accounting/SKILL.md   会计技能：答疑/归类/记账准则/报表解读
    ├─ recipes/classify.yaml        流水归类食谱
    └─ recipes/report.yaml          报表月结解读食谱
 ```
 
-## 🚀 弟弟怎么装（零基础）
+## 🚀 快速部署（零基础）
 
 1. 装 **Goose**（桌面版）：官网下载安装，见下方链接
 2. 装 **Node.js 18+**，再用 `winget install --id simonmichael.hledger` 装 **hledger**（记账引擎）
@@ -55,4 +55,4 @@ accounting-agent/
 
 - **算钱**（合计、汇总、税率）→ 交给 hledger 账本工具
 - **理解判断**（答疑、归类、解读）→ 交给 AI
-- **关键操作**（写账）→ 弟弟真人确认才生效
+- **关键操作**（写账）→ 用户真人确认才生效
