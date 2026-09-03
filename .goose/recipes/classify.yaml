@@ -1,0 +1,19 @@
+version: "1.0.0"
+title: 流水归类助手
+description: 把一条收支流水判断成应记的会计科目，给出建议并等用户确认
+instructions: |
+  读取用户给的流水描述，用会计知识判断这条收支应记的科目/类别。
+  按如下格式输出（只给建议，绝不直接写入账本，必须等用户确认）：
+  - 建议科目：
+  - 推荐类别：
+  - 一句话理由：
+  - 是否要写入账本？(请用户确认)
+parameters:
+  - key: description
+    input_type: string
+    requirement: required
+    description: 收支流水描述，例如「帮x公司做账 800」
+  - key: amount
+    input_type: string
+    requirement: optional
+    description: 金额（可省略，含义常已包含在描述里）

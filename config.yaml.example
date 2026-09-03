@@ -1,0 +1,46 @@
+# ============================================================
+# Goose 配置参考模板 —— 「会计 agent」底座
+# 实际使用时复制到用户 goose 配置目录：
+#   Windows:  %APPDATA%\Block\goose\config\config.yaml
+#   macOS/Linux:  ~/.config/goose/config.yaml
+# 优先用 `goose configure` 配 provider；下面这份手写作参考。
+# ============================================================
+
+# 主模型 provider
+model_provider: deepseek
+
+providers:
+  # DeepSeek 走 OpenAI 兼容接口
+  deepseek:
+    name: deepseek
+    engine: openai
+    display_name: DeepSeek
+    base_url: https://api.deepseek.com/v1
+    api_key_env: DEEPSEEK_API_KEY        # 从环境变量读 key，别写进文件
+    supports_streaming: true
+    models:
+      deepseek-chat:
+        name: deepseek-chat
+        max_output_tokens: 4096
+      deepseek-reasoner:
+        name: deepseek-reasoner
+        max_output_tokens: 4096
+
+# 记账扩展：让 agent 读写本地 hledger 账本（@iiatlas/hledger-mcp, MIT）
+# 前提：hledger 已装、Node 18+ 已装、@iiatlas/hledger-mcp 已装（npm i -g）
+# 挂载方式：goose 直接调 node 跑该包的入口 JS（最稳，不联网）
+extensions:
+  hledger-mcp:
+    enabled: true
+    type: stdio
+    name: "hledger 记账"
+    description: "读/写本地 hledger 账本（科目、记账、报表）"
+    # 推荐：node + 入口 JS 绝对路径（不依赖 npx 联网拉包）
+    cmd: node
+    args:
+      - "E:/npm-global/node_modules/@iiatlas/hledger-mcp/build/index.js"
+      - "D:/accounting-agent/ledger/master.journal"
+      # 开发/学习期建议先 --read-only（只读，防误写），
+      # 稳定后把这行删掉即可解锁「写」能力。
+      - "--read-only"
+    timeout: 300

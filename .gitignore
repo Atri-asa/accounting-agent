@@ -1,0 +1,19 @@
+# 密钥 —— 绝不上传
+.env
+
+# 账本数据（弟弟个人账目，不进仓库；可另存私有备份）
+ledger/*.journal
+ledger/*.ledger
+
+# 本地运行时产物
+*.log
+.Python
+.DS_Store
+__pycache__/
+
+# 本机自动生成的配置（含本机绝对路径，别上传）
+config.local.yaml
+
+# 备份文件
+*.bak-*
+*.bak
