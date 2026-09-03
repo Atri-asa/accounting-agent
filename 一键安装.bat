@@ -1,28 +1,28 @@
 @echo off
+chcp 65001 >nul
 echo.
 echo  ============================================
-echo     »á¼ÆÖúÊÖ  Ò»¼ü°²×°
+echo     ä¼šè®¡åŠ©æ‰‹  ä¸€é”®å®‰è£…
 echo  ============================================
 echo.
-echo [1/4] °²×° Node.js£¨¼ÇÕËÇÅÐèÒª£©...
-winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements >nul 2>&1 && echo  --- Íê³É || echo  --- Ê§°Ü£¬ÇëÊÖ¶¯×°£ºnodejs.org/en/download
+echo [1/4] å®‰è£… Node.jsï¼ˆè®°è´¦æ¡¥éœ€è¦ï¼‰...
+winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements >nul 2>&1 && echo  --- å®Œæˆ || echo  --- å¤±è´¥ï¼Œè¯·æ‰‹åŠ¨è£…ï¼šnodejs.org/en/download
 echo.
-echo [2/4] °²×° hledger£¨¼ÇÕËÒýÇæ£©...
-winget install -e --id simonmichael.hledger --accept-source-agreements --accept-package-agreements >nul 2>&1 && echo  --- Íê³É || echo  --- Ê§°Ü£¬ÇëÊÖ¶¯×°£ºhledger.org
+echo [2/4] å®‰è£… hledgerï¼ˆè®°è´¦å¼•æ“Žï¼‰...
+winget install -e --id simonmichael.hledger --accept-source-agreements --accept-package-agreements >nul 2>&1 && echo  --- å®Œæˆ || echo  --- å¤±è´¥ï¼Œè¯·æ‰‹åŠ¨è£…ï¼šhledger.org
 echo.
-echo [3/4] °²×° hledger-mcp£¨ÈÃ AI ÄÜ¼ÇÕË£©...
-set "PATH=%PATH%;%ProgramFiles%
-odejs"
-npm install -g @iiatlas/hledger-mcp >nul 2>&1 && echo  --- Íê³É || echo  --- Ê§°Ü£¬ÇëÏÈ×°ºÃ Node ÔÙÖØÅÜ±¾½Å±¾
+echo [3/4] å®‰è£… hledger-mcpï¼ˆè®© AI èƒ½è®°è´¦ï¼‰...
+set "PATH=%PATH%;%ProgramFiles%\nodejs"
+npm install -g @iiatlas/hledger-mcp >nul 2>&1 && echo  --- å®Œæˆ || echo  --- å¤±è´¥ï¼Œè¯·å…ˆè£…å¥½ Node å†é‡è·‘æœ¬è„šæœ¬
 echo.
-echo [4/4] ´ò¿ª Goose ÏÂÔØÒ³£¨AI ±¾Ìå£©...
+echo [4/4] æ‰“å¼€ Goose ä¸‹è½½é¡µï¼ˆAI æœ¬ä½“ï¼‰...
 start "" https://goose-docs.ai/desktop
 echo.
-echo ×°Íêºó½ÓÏÂÀ´£º
-echo   1. ¸ÄÏµÍ³ÇøÓòÎª UTF-8£¨·ñÔò¶Á²»ÁËÖÐÎÄÕË±¾£©£º¿ØÖÆÃæ°å-ÇøÓò-¹ÜÀí-
-echo      ¸ü¸ÄÏµÍ³ÇøÓòÉèÖÃ-¹´Ñ¡¡¸Unicode UTF-8¡¹-ÖØÆô
-echo   2. ÖØ¿ªÖÕ¶Ë£¬ÔËÐÐ bash setup.sh£¨»á×Ô¶¯Éú³ÉÕË±¾£©
-echo   3. ÔÚ .env ÀïÌî DeepSeek key
-echo   4. ×°ºÃ Goose ºó´ò¿ª¾ÍÄÜÓÃÁË
+echo è£…å®ŒåŽæŽ¥ä¸‹æ¥ï¼š
+echo   1. æ”¹ç³»ç»ŸåŒºåŸŸä¸º UTF-8ï¼ˆå¦åˆ™è¯»ä¸äº†ä¸­æ–‡è´¦æœ¬ï¼‰ï¼šæŽ§åˆ¶é¢æ¿â†’åŒºåŸŸâ†’ç®¡ç†â†’
+echo      æ›´æ”¹ç³»ç»ŸåŒºåŸŸè®¾ç½®â†’å‹¾é€‰ã€ŒUnicode UTF-8ã€â†’é‡å¯
+echo   2. é‡å¼€ç»ˆç«¯ï¼Œè¿è¡Œ bash setup.shï¼ˆä¼šè‡ªåŠ¨ç”Ÿæˆè´¦æœ¬ï¼‰
+echo   3. åœ¨ .env é‡Œå¡« DeepSeek key
+echo   4. è£…å¥½ Goose åŽæ‰“å¼€å°±èƒ½ç”¨äº†
 echo.
 pause
